@@ -10,4 +10,9 @@ class DefaultController extends Controller
     {
         return $this->render('ApplicationBundle:Default:index.html.twig');
     }
+
+    public function liveAction()
+    {
+        return $this->render('ApplicationBundle:Default:live.html.twig');
+    }
 }

@@ -3,3 +3,9 @@ application_homepage:
     defaults: { _controller: ApplicationBundle:Default:index }
     requirements:
         _method:  GET
+
+application_live:
+    pattern:  /live
+    defaults: { _controller: ApplicationBundle:Default:live }
+    requirements:
+        _method:  GET
