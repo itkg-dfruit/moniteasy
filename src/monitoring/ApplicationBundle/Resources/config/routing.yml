@@ -1,0 +1,5 @@
+application_homepage:
+    pattern:  /
+    defaults: { _controller: ApplicationBundle:Default:index }
+    requirements:
+        _method:  GET
