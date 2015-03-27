@@ -1,0 +1,10 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+    <h1>ajout d'un nouveau site :</h1>
+    <p>ex: goole.com</p>
+    <form method="post" action="/process">
+        <label for="url">URL DU SITE: </label>
+        <input id="url" type="text" name="url" placeholder="veuiller entrer l'adresse du site a surveiller"/>
+        <button type="submit">envoyer</button>
+    </form>
+{% endblock %}

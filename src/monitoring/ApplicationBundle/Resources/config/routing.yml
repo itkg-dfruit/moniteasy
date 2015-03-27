@@ -9,3 +9,15 @@ application_live:
     defaults: { _controller: ApplicationBundle:Default:live }
     requirements:
         _method:  GET
+
+application_form:
+    pattern:  /form
+    defaults: { _controller: ApplicationBundle:Default:test }
+    requirements:
+        _method:  GET
+
+application_process:
+    pattern:  /process
+    defaults: { _controller: ApplicationBundle:Default:process }
+    requirements:
+        _method:  POST
