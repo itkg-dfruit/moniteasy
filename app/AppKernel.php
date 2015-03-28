@@ -17,6 +17,7 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new monitoring\ApplicationBundle\ApplicationBundle(),
             new Nelmio\ApiDocBundle\NelmioApiDocBundle(),
+            new Anchovy\CURLBundle\AnchovyCURLBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

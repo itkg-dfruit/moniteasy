@@ -39,7 +39,20 @@
                 </div>
             </div>
         </nav>
-        {% block body %}{% endblock %}
+
+        {% if app.session.flashBag.has('success') %}
+            <div class="alert alert-success">
+                {% for msg in app.session.flashBag.get('success') %}
+                    {{ msg }}
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {# body #}
+        {% block body %}
+
+        {% endblock %}
+        {# end body #}
         <footer>
             <p class="pull-right">©2014-2015 Moniteasy - All rights reserved</p>
         </footer>

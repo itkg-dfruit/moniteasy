@@ -21,7 +21,8 @@
         "sensio/distribution-bundle": "~3.0,>=3.0.12",
         "incenteev/composer-parameter-handler": "~2.0",
         "nelmio/api-doc-bundle": "2.8.*@dev",
-        "jakoch/phantomjs-installer": "dev-master"
+        "jakoch/phantomjs-installer": "dev-master",
+        "anchovy/curl-bundle": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

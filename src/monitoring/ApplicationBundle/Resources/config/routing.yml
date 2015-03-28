@@ -10,14 +10,8 @@ application_live:
     requirements:
         _method:  GET
 
-application_form:
-    pattern:  /form
-    defaults: { _controller: ApplicationBundle:Default:test }
+moniteasy_check_create:
+    pattern:  /create_check
+    defaults: { _controller: ApplicationBundle:check:createCheck }
     requirements:
-        _method:  GET
-
-application_process:
-    pattern:  /process
-    defaults: { _controller: ApplicationBundle:Default:process }
-    requirements:
-        _method:  POST
+        _method:  GET|POST

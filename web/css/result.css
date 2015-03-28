@@ -2,4 +2,4 @@
 .resume { font-weight: bold; font-size: 1.3em; text-align: center; }
 .prettycode { margin: 0 10% 0 10%; }
 
-#time, #url { color: red;  }
+#time, #url, #ip { color: red;  }

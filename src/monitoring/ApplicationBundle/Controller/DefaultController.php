@@ -9,16 +9,6 @@ use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 class DefaultController extends Controller
 {
 
-    /**
-     * This is the documentation description of your method, it will appear
-     * on a specific pane. It will read all the text until the first
-     * annotation.
-     *
-     * @ApiDoc(
-     *  resource=true,
-     *  description="This is a description of your API method",
-     * )
-     */
     public function indexAction()
     {
         return $this->render('ApplicationBundle:Default:index.html.twig');
@@ -29,57 +19,31 @@ class DefaultController extends Controller
         return $this->render('ApplicationBundle:Default:live.html.twig');
     }
 
-    public function testAction()
-    {
-        return $this->render('ApplicationBundle:Default:test.html.twig');
-    }
-
-
-    /**
-     * curl the given url and return http header and time reponse of request
-     *
-     * @ApiDoc(
-     *  resource=true,
-     *  description="This is a description of your API method",
-     * )
-     */
-    public function processAction()
+    public function createCheckAction()
     {
         $url = $_POST['url'];
-
-//        $ch = curl_init($url);
-//        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-//        curl_setopt($ch, CURLOPT_BINARYTRANSFER, true);
-//        $output = curl_exec($ch);
-
         $timeout = 10;
 
-        $ch = curl_init($url);
+        $options = array(
+            'CURLOPT_FRESH_CONNECT'=> TRUE,
+            'CURLOPT_TIMEOUT'=> $timeout,
+            'CURLOPT_CONNECTTIMEOUT' => $timeout,
+            'CURLOPT_SSL_VERIFYPEER' => FALSE,
+            'CURLOPT_SSL_VERIFYHOST' => 0,
+            'CURLOPT_FOLLOWLOCATION' => TRUE,
+            'CURLOPT_RETURNTRANSFER' => TRUE,
+            'CURLOPT_NOBODY' => TRUE,
+            'CURLOPT_HEADER' => TRUE
+        );
 
-        curl_setopt($ch, CURLOPT_FRESH_CONNECT, true);
-        curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
-        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+        $curl = $this->get('anchovy.curl')->setURL($url)->setOptions($options);
 
-        if (preg_match('`^https://`i', $url))
-        {
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-        }
+        $headers = $curl->execute();
+        $infos = $curl->getInfo();
 
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_NOBODY, true);
+        return $this->render('ApplicationBundle:Default:result.html.twig', array('reponse' => $headers, 'time' => $infos['total_time'], 'url' => $infos['url']));
 
-        curl_setopt($ch, CURLOPT_HEADER, true);
-
-        $headers = curl_exec($ch);
-        $info = curl_getinfo($ch);
-
-        $time = $info['total_time'];
-        $urlCible = $info['url'];
-        curl_close($ch);
-
-//        $headerparsed = array();
+        //        $headerparsed = array();
 //        $lines = explode("\r\n", $headers);
 //        $header_idx = 0;
 //        foreach ($lines as $line)
@@ -92,10 +56,8 @@ class DefaultController extends Controller
 //            else
 //                $header_idx++;
 //        }
+//        print_r($headerparsed); die;
 
-        //print_r($headerparsed); die;
-
-        return $this->render('ApplicationBundle:Default:result.html.twig', array('reponse' => $headers, 'time' => $time, 'url' => $urlCible));
     }
 
 }

@@ -1,0 +1,27 @@
+{% extends '::base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?lang=css&skin=desert"></script>
+    <link href="{{ asset('css/result.css') }}" type="text/css" rel="stylesheet" />
+{% endblock %}
+{% block body %}
+    <header>
+        <h1>Form :</h1>
+    </header>
+
+    <form action="{{ path('moniteasy_check_create') }}" method="post" {{ form_enctype(form) }} >
+        {{ form_errors(form) }}
+
+        {{ form_row(form.name) }}
+        {{ form_row(form.url) }}
+        {{ form_row(form.timeOut) }}
+        {{ form_row(form.pingInterval) }}
+        {{ form_row(form.tags) }}
+
+        {{ form_rest(form) }}
+
+        <button class="btn btn-success" type="submit">Save</button>
+        <button class="btn btn-warning" type="reset">Reset</button>
+    </form>
+
+{% endblock %}
