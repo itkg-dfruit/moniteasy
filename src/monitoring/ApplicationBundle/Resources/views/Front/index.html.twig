@@ -1,13 +1,15 @@
 {% extends '::front.html.twig' %}
 
+{% block title %}{{ title }}{% endblock%}
+
 {% block body %}
     <!-- Header -->
     <header id="head">
         <div class="container">
             <div class="row">
-                <h1 class="lead">Welcome to Moniteasy, The Easyiest Networking Monitoring Application.</h1>
-                <p>proutrzhegpiezhgpiezhpg</p>
-                <p><a href="{{ path('front_about') }}" class="btn btn-default btn-lg" role="button">MORE INFO</a> <a class="btn btn-action btn-lg" role="button">DOWNLOAD NOW</a></p>
+                <h1 class="lead">Welcome to Moniteasy, The Easyiest Networking Monitoring Application Tools.</h1>
+                <p>Easy to use, easy to install. Start now and download source code on my github</p>
+                <p><a href="{{ path('front_about') }}" class="btn btn-default btn-lg" role="button">MORE INFO</a> <a class="btn btn-action btn-lg" role="button" target="_blank" href="https://github.com/Thibaut-gauvin/moniteasy">DOWNLOAD NOW <i class="fa fa-github fa-2"></i></a></p>
             </div>
         </div>
     </header>

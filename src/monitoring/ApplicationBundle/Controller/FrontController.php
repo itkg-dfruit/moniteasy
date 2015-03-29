@@ -11,37 +11,44 @@ class FrontController extends Controller
 
     public function homeAction()
     {
-        return $this->render('ApplicationBundle:Front:index.html.twig');
+        $title = 'home';
+        return $this->render('ApplicationBundle:Front:index.html.twig', array('title' => $title));
     }
 
     public function aboutAction()
     {
-        return $this->render('ApplicationBundle:Front:about.html.twig');
+        $title = 'About Us';
+        return $this->render('ApplicationBundle:Front:about.html.twig', array('title' => $title));
     }
 
     public function downloadAction()
     {
-        return $this->render('ApplicationBundle:Front:download.html.twig');
+        $title = 'Download & Install';
+        return $this->render('ApplicationBundle:Front:download.html.twig', array('title' => $title));
     }
 
     public function apidocAction()
     {
-        return $this->render('ApplicationBundle:Front:apidoc.html.twig');
+        $title = 'Use our Api';
+        return $this->render('ApplicationBundle:Front:apidoc.html.twig', array('title' => $title));
     }
 
     public function contactAction()
     {
-        return $this->render('ApplicationBundle:Front:contact.html.twig');
+        $title = 'Contact Us';
+        return $this->render('ApplicationBundle:Front:contact.html.twig', array('title' => $title));
     }
 
     public function signInAction()
     {
-        return $this->render('ApplicationBundle:Front:signIn.html.twig');
+        $title = 'Sign In';
+        return $this->render('ApplicationBundle:Front:signIn.html.twig', array('title' => $title));
     }
 
     public function signUpAction()
     {
-        return $this->render('ApplicationBundle:Front:signUp.html.twig');
+        $title = 'Sign Up';
+        return $this->render('ApplicationBundle:Front:signUp.html.twig', array('title' => $title));
     }
 
 }
