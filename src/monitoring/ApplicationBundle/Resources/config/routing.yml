@@ -1,17 +1,44 @@
-application_homepage:
+front_home:
     pattern:  /
-    defaults: { _controller: ApplicationBundle:Default:index }
+    defaults: { _controller: ApplicationBundle:Front:home }
     requirements:
         _method:  GET
 
-application_live:
-    pattern:  /live
-    defaults: { _controller: ApplicationBundle:Default:live }
+front_about:
+    pattern:  /about
+    defaults: { _controller: ApplicationBundle:Front:about }
     requirements:
         _method:  GET
 
-moniteasy_check_create:
-    pattern:  /create_check
-    defaults: { _controller: ApplicationBundle:check:createCheck }
+front_download:
+    pattern:  /download
+    defaults: { _controller: ApplicationBundle:Front:download }
     requirements:
-        _method:  GET|POST
+        _method:  GET
+
+front_apidoc:
+    pattern:  /apidoc
+    defaults: { _controller: ApplicationBundle:Front:apidoc }
+    requirements:
+        _method:  GET
+
+front_contact:
+    pattern:  /contact
+    defaults: { _controller: ApplicationBundle:Front:contact }
+    requirements:
+        _method:  GET
+
+
+
+
+#application_live:
+#    pattern:  /live
+#    defaults: { _controller: ApplicationBundle:Default:live }
+#    requirements:
+#        _method:  GET
+#
+#moniteasy_check_create:
+#    pattern:  /create_check
+#    defaults: { _controller: ApplicationBundle:check:createCheck }
+#    requirements:
+#        _method:  GET|POST
