@@ -22,7 +22,8 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "nelmio/api-doc-bundle": "2.8.*@dev",
         "jakoch/phantomjs-installer": "dev-master",
-        "anchovy/curl-bundle": "dev-master"
+        "anchovy/curl-bundle": "dev-master",
+        "friendsofsymfony/user-bundle": "~2.0@dev"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

@@ -34,4 +34,14 @@ class FrontController extends Controller
         return $this->render('ApplicationBundle:Front:contact.html.twig');
     }
 
+    public function signInAction()
+    {
+        return $this->render('ApplicationBundle:Front:signIn.html.twig');
+    }
+
+    public function signUpAction()
+    {
+        return $this->render('ApplicationBundle:Front:signUp.html.twig');
+    }
+
 }

@@ -28,6 +28,18 @@ front_contact:
     requirements:
         _method:  GET
 
+front_signIn:
+    pattern:  /signIn
+    defaults: { _controller: ApplicationBundle:Front:signIn }
+    requirements:
+        _method:  GET
+
+front_signUp:
+    pattern:  /signUp
+    defaults: { _controller: ApplicationBundle:Front:signUp }
+    requirements:
+        _method:  GET
+
 
 
 
