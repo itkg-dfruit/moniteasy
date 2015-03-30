@@ -40,17 +40,33 @@ front_signUp:
     requirements:
         _method:  GET
 
+backend_live:
+    pattern:  /home
+    defaults: { _controller: ApplicationBundle:Default:index }
+    requirements:
+        _method:  GET
 
+backend_live:
+    pattern:  /live
+    defaults: { _controller: ApplicationBundle:Default:live }
+    requirements:
+        _method:  GET
 
+backend_check_create:
+    pattern:  /create_check
+    defaults: { _controller: ApplicationBundle:check:createCheck }
+    requirements:
+        _method:  GET|POST
 
-#application_live:
-#    pattern:  /live
-#    defaults: { _controller: ApplicationBundle:Default:live }
-#    requirements:
-#        _method:  GET
-#
-#moniteasy_check_create:
-#    pattern:  /create_check
-#    defaults: { _controller: ApplicationBundle:check:createCheck }
-#    requirements:
-#        _method:  GET|POST
+backend_post:
+    pattern:  /post
+    defaults: { _controller: ApplicationBundle:check:postCheck }
+    requirements:
+        _method:  POST
+
+backend_dashboard:
+    pattern: /dashboard
+    defaults: { _controller: ApplicationBundle:Default:dashBoard }
+    requirements:
+        _method:  GET
+

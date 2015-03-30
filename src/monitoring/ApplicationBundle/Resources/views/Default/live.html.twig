@@ -29,8 +29,16 @@
 
                 <h1 class="page-header">
                     Dashboard
-                    <a class="btn btn-success" href="{{ path('moniteasy_check_create') }}">Ajouter un nouveau Site a monitorer.</a>
+                    <a class="btn btn-success" href="{{ path('backend_check_create') }}">Ajouter un nouveau Site a monitorer.</a>
                 </h1>
+
+                <div class="row">
+
+                    {% if app.session is not empty %}
+                        {% set targetUrl = app.session.get('_security.' ~ app.security.token.providerKey ~ '.target_path') %}
+                        {% if targetUrl is not empty %}<p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>{% endif %}
+                    {% endif %}
+                </div>
 
                 <div class="row placeholders">
                     <div class="col-xs-6 col-sm-3 placeholder text-center">

@@ -19,7 +19,12 @@ class DefaultController extends Controller
         return $this->render('ApplicationBundle:Default:live.html.twig');
     }
 
-    public function createCheckAction()
+    public function dashBoardAction()
+    {
+        return $this->render('ApplicationBundle:Default:live.html.twig');
+    }
+
+    public function resultAction()
     {
         $url = $_POST['url'];
         $timeout = 10;

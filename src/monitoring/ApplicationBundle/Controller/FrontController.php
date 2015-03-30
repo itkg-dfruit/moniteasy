@@ -41,14 +41,13 @@ class FrontController extends Controller
 
     public function signInAction()
     {
-        $title = 'Sign In';
-        return $this->render('ApplicationBundle:Front:signIn.html.twig', array('title' => $title));
+        return $this->redirect($this->generateUrl('fos_user_security_login'));
     }
 
     public function signUpAction()
     {
-        $title = 'Sign Up';
-        return $this->render('ApplicationBundle:Front:signUp.html.twig', array('title' => $title));
+//        parent::
+        return $this->redirect($this->generateUrl('fos_user_registration_register'));
     }
 
 }
