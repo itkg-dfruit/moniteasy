@@ -1,3 +1,5 @@
+################################################################
+# front
 front_home:
     pattern:  /
     defaults: { _controller: ApplicationBundle:Front:home }
@@ -40,27 +42,18 @@ front_signUp:
     requirements:
         _method:  GET
 
+################################################################
+#back
+
 backend_live:
     pattern:  /home
     defaults: { _controller: ApplicationBundle:Default:index }
     requirements:
         _method:  GET
 
-backend_live:
-    pattern:  /live
-    defaults: { _controller: ApplicationBundle:Default:live }
-    requirements:
-        _method:  GET
-
-backend_check_create:
-    pattern:  /create_check
-    defaults: { _controller: ApplicationBundle:check:createCheck }
-    requirements:
-        _method:  GET|POST
-
 backend_post:
     pattern:  /post
-    defaults: { _controller: ApplicationBundle:check:postCheck }
+    defaults: { _controller: ApplicationBundle:Check:postCheck }
     requirements:
         _method:  POST
 
@@ -70,3 +63,35 @@ backend_dashboard:
     requirements:
         _method:  GET
 
+################################################################
+#crud checkUrl
+
+backend_check_create:
+    pattern:  /create_check
+    defaults: { _controller: ApplicationBundle:Check:putCheck }
+    requirements:
+        _method:  GET|POST
+
+backend_check_read:
+    pattern:  /read_check
+    defaults: { _controller: ApplicationBundle:Check:getCheck }
+    requirements:
+        _method:  GET
+
+backend_check_readAll:
+    pattern:  /readAll_check
+    defaults: { _controller: ApplicationBundle:Check:getAllCheck }
+    requirements:
+        _method:  GET
+
+backend_check_update:
+    pattern:  /update_check
+    defaults: { _controller: ApplicationBundle:Check:postCheck }
+    requirements:
+        _method:  GET|POST
+
+backend_check_delete:
+    pattern:  /delete_check
+    defaults: { _controller: ApplicationBundle:Check:deleteCheck }
+    requirements:
+        _method:  GET|DELETE
