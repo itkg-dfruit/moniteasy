@@ -47,21 +47,34 @@ front_signUp:
 
 backend_live:
     pattern:  /home
-    defaults: { _controller: ApplicationBundle:Default:index }
+    defaults: { _controller: ApplicationBundle:Default:home }
     requirements:
         _method:  GET
-
-backend_post:
-    pattern:  /post
-    defaults: { _controller: ApplicationBundle:Check:postCheck }
-    requirements:
-        _method:  POST
 
 backend_dashboard:
     pattern: /dashboard
     defaults: { _controller: ApplicationBundle:Default:dashBoard }
     requirements:
         _method:  GET
+
+backend_notification:
+    pattern: /notification
+    defaults: { _controller: ApplicationBundle:Default:alert }
+    requirements:
+        _method:  GET
+
+backend_account:
+    pattern: /account
+    defaults: { _controller: ApplicationBundle:Default:account }
+    requirements:
+        _method:  GET
+
+
+backend_post:
+    pattern:  /post
+    defaults: { _controller: ApplicationBundle:Check:postCheck }
+    requirements:
+        _method:  POST
 
 ################################################################
 #crud checkUrl

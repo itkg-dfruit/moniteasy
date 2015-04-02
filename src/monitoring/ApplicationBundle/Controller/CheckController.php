@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 
 
-class checkController extends Controller
+class CheckController extends Controller
 {
     public function putCheckAction(Request $request)
     {
@@ -27,10 +27,10 @@ class checkController extends Controller
 
             $request->getSession()
                 ->getFlashBag()
-                ->add('success', 'Welcome to the Death Star, have a magical day!')
+                ->add('success', 'Your checkUrl has been properly created !')
             ;
 
-            return $this->redirect($this->generateUrl('application_live'));
+            return $this->redirect($this->generateUrl('backend_dashboard'));
         }
 
         return $this->render('ApplicationBundle:Check:createCheck.html.twig', array(
@@ -38,40 +38,23 @@ class checkController extends Controller
         ));
     }
 
-    public function getCheckAction() {
-
+    public function getCheckAction()
+    {
+        return $this->render('ApplicationBundle:Check:readCheck.html.twig');
     }
 
-    public function getAllCheckAction() {
-
+    public function getAllCheckAction()
+    {
+        return $this->render('ApplicationBundle:Check:readAllCheck.html.twig');
     }
 
-    public function postCheckAction() {
-//        $url = $_POST['url'];
-//
-//        $timeout = 10;
-//
-//        $options = array(
-//            'CURLOPT_FRESH_CONNECT'=> TRUE,
-//            'CURLOPT_TIMEOUT'=> $timeout,
-//            'CURLOPT_CONNECTTIMEOUT' => $timeout,
-//            'CURLOPT_SSL_VERIFYPEER' => FALSE,
-//            'CURLOPT_SSL_VERIFYHOST' => 0,
-//            'CURLOPT_FOLLOWLOCATION' => TRUE,
-//            'CURLOPT_RETURNTRANSFER' => TRUE,
-//            'CURLOPT_NOBODY' => TRUE,
-//            'CURLOPT_HEADER' => TRUE
-//        );
-//
-//        $curl = $this->get('anchovy.curl')->setURL($url)->setOptions($options);
-//
-//        $headers = $curl->execute();
-//        $infos = $curl->getInfo();
-//
-//        return $this->render('ApplicationBundle:Check:result.html.twig', array('reponse' => $headers, 'time' => $infos['total_time'], 'url' => $infos['url']));
+    public function postCheckAction()
+    {
+        return $this->render('ApplicationBundle:Check:updateCheck.html.twig');
     }
 
-    public function deleteCheckAction() {
-
+    public function deleteCheckAction()
+    {
+        return $this->render('ApplicationBundle:Check:deleteCheck.html.twig');
     }
 }

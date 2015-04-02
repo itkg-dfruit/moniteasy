@@ -26,34 +26,28 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">MonitEasy</a>
+                    <a class="navbar-brand" href="{{ path('backend_live') }}"><img id="img_logo" class="glyphicon" src="{{ asset('/images/logo_img.png') }}" alt="MonitEasy">MonitEasy</a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="{{ path('backend_dashboard') }}">Tableau de bord</a></li>
-                        <li><a href="#">Paramétre</a></li>
-                        <li><a href="#">Mon Compte</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Aide / F.A.Q</a></li>
+                        <li><a href="{{ path('backend_dashboard') }}">Dashboard</a></li>
+                        <li><a href="{{ path('backend_notification') }}">Notifications</a></li>
+                        <li><a href="{{ path('backend_account') }}">Account</a></li>
                         <li><a href="/logout">Log Out</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
 
-        {% if app.session.flashBag.has('success') %}
-            <div class="alert alert-success">
-                {% for msg in app.session.flashBag.get('success') %}
-                    {{ msg }}
-                {% endfor %}
+        <div class="container-fluid">
+
+            <div class="row row-offcanvas row-offcanvas-left">
+                {% block rightNav %}{% endblock %}
+                <div class="col-sm-9 col-md-10 main">
+                    {% block body %}{% endblock %}
+                </div><!--/row-->
             </div>
-        {% endif %}
-
-        {# body #}
-        {% block body %}
-
-        {% endblock %}
-        {# end body #}
+        </div><!--/.container-->
         <footer>
             <p class="pull-right">©2014-2015 Moniteasy - All rights reserved</p>
         </footer>

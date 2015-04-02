@@ -9,7 +9,7 @@ use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 class DefaultController extends Controller
 {
 
-    public function indexAction()
+    public function homeAction()
     {
         return $this->render('ApplicationBundle:Default:index.html.twig');
     }
@@ -24,29 +24,39 @@ class DefaultController extends Controller
         return $this->render('ApplicationBundle:Default:live.html.twig');
     }
 
+    public function alertAction()
+    {
+        return $this->render('ApplicationBundle:Default:alert.html.twig');
+    }
+
+    public function accountAction()
+    {
+        return $this->render('ApplicationBundle:Default:account.html.twig');
+    }
+
     public function resultAction()
     {
-        $url = $_POST['url'];
-        $timeout = 10;
-
-        $options = array(
-            'CURLOPT_FRESH_CONNECT'=> TRUE,
-            'CURLOPT_TIMEOUT'=> $timeout,
-            'CURLOPT_CONNECTTIMEOUT' => $timeout,
-            'CURLOPT_SSL_VERIFYPEER' => FALSE,
-            'CURLOPT_SSL_VERIFYHOST' => 0,
-            'CURLOPT_FOLLOWLOCATION' => TRUE,
-            'CURLOPT_RETURNTRANSFER' => TRUE,
-            'CURLOPT_NOBODY' => TRUE,
-            'CURLOPT_HEADER' => TRUE
-        );
-
-        $curl = $this->get('anchovy.curl')->setURL($url)->setOptions($options);
-
-        $headers = $curl->execute();
-        $infos = $curl->getInfo();
-
-        return $this->render('ApplicationBundle:Default:result.html.twig', array('reponse' => $headers, 'time' => $infos['total_time'], 'url' => $infos['url']));
+//        $url = $_POST['url'];
+//        $timeout = 10;
+//
+//        $options = array(
+//            'CURLOPT_FRESH_CONNECT'=> TRUE,
+//            'CURLOPT_TIMEOUT'=> $timeout,
+//            'CURLOPT_CONNECTTIMEOUT' => $timeout,
+//            'CURLOPT_SSL_VERIFYPEER' => FALSE,
+//            'CURLOPT_SSL_VERIFYHOST' => 0,
+//            'CURLOPT_FOLLOWLOCATION' => TRUE,
+//            'CURLOPT_RETURNTRANSFER' => TRUE,
+//            'CURLOPT_NOBODY' => TRUE,
+//            'CURLOPT_HEADER' => TRUE
+//        );
+//
+//        $curl = $this->get('anchovy.curl')->setURL($url)->setOptions($options);
+//
+//        $headers = $curl->execute();
+//        $infos = $curl->getInfo();
+//
+//        return $this->render('ApplicationBundle:Default:result.html.twig', array('reponse' => $headers, 'time' => $infos['total_time'], 'url' => $infos['url']));
 
         //        $headerparsed = array();
 //        $lines = explode("\r\n", $headers);

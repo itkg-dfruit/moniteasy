@@ -1,11 +1,6 @@
-{% extends '::base.html.twig' %}
-
-{% block stylesheets %}
-    {{ parent() }}
-    <link href="{{ asset('css/login.css') }}" type="text/css" rel="stylesheet" />
-{% endblock %}
+{% extends 'ApplicationBundle::back_end_layout.html.twig' %}
 
 {% block body %}
     <p>Welcome to Moniteasy, The Easyiest Web Monitoring Application.</p>
-    <p>To begin, <a href="{{ path('backend_check_create') }}">create your first check</a></p>
+    <p>To begin, <a href="{{ path('backend_check_create') }}">Create your first check</a></p>
 {% endblock %}
