@@ -43,6 +43,13 @@
 
             <div class="row row-offcanvas row-offcanvas-left">
                 {% block rightNav %}{% endblock %}
+                {% for flashMessages in app.session.flashbag.all() %}
+                    {% for flashMessage in flashMessages %}
+                        <div class="flash-message">
+                            {{ flashMessage }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
                 <div class="col-sm-9 col-md-10 main">
                     {% block body %}{% endblock %}
                 </div><!--/row-->

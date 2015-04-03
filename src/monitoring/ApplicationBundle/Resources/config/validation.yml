@@ -1,0 +1,21 @@
+monitoring\ApplicationBundle\Entity\checkUrl:
+    properties:
+        name:
+            - NotBlank: ~
+        url:
+            - NotBlank: ~
+#            - Regex:
+#                pattern: "/.*\.es$/"
+#                message: "La URL debe terminar en .es"
+        timeOut:
+            - GreaterThan:
+                value: 0
+                message: "Time Out cannot be negative"
+            - NotBlank: ~
+        pingInterval:
+            - GreaterThan:
+                value: 0
+                message: "Ping Interval cannot be negative"
+            - NotBlank: ~
+        tags:
+            - NotBlank: ~
