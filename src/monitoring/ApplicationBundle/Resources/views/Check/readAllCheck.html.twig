@@ -3,6 +3,7 @@
 {% block body %}
     {% for checkUrl in data %}
         <hr>
+        <p><strong>ID: </strong>{{ checkUrl.id }}</p>
         <p><strong>Name: </strong>{{ checkUrl.name }}</p>
         <p><strong>Url: </strong>{{ checkUrl.url }}</p>
         <p><strong>Time out: </strong>{{ checkUrl.timeOut }}sec</p>

@@ -46,65 +46,73 @@ front_signUp:
 #back
 
 backend_live:
-    pattern:  /home
+    pattern:  /backend/home
     defaults: { _controller: ApplicationBundle:Default:home }
     requirements:
         _method:  GET
 
 backend_dashboard:
-    pattern: /dashboard
+    pattern: /backend/dashboard
     defaults: { _controller: ApplicationBundle:Default:dashBoard }
     requirements:
         _method:  GET
 
 backend_notification:
-    pattern: /notification
-    defaults: { _controller: ApplicationBundle:Default:alert }
+    pattern: /backend/notification
+    defaults: { _controller: ApplicationBundle:Default:notification }
     requirements:
         _method:  GET
 
 backend_account:
-    pattern: /account
+    pattern: /backend/account
     defaults: { _controller: ApplicationBundle:Default:account }
     requirements:
         _method:  GET
-
-
-backend_post:
-    pattern:  /post
-    defaults: { _controller: ApplicationBundle:Check:postCheck }
-    requirements:
-        _method:  POST
 
 ################################################################
 #crud checkUrl
 
 backend_check_create:
-    pattern:  /create_check
+    pattern:  /backend/check/create
     defaults: { _controller: ApplicationBundle:Check:putCheck }
     requirements:
         _method:  GET|POST
 
-backend_check_read:
-    pattern:  /read_check/{idCheckUrl}
-    defaults: { _controller: ApplicationBundle:Check:getCheck }
-    requirements:
-        _method:  GET
-
 backend_check_readAll:
-    pattern:  /readAll_check
+    pattern:  /backend/check/read
     defaults: { _controller: ApplicationBundle:Check:getAllCheck }
     requirements:
         _method:  GET
 
+backend_check_read:
+    pattern:  /backend/check/read/{idCheckUrl}
+    defaults: { _controller: ApplicationBundle:Check:getCheck }
+    requirements:
+        _method:  GET
+
 backend_check_update:
-    pattern:  /update_check/{idCheckUrl}
+    pattern:  /backend/check/update/{idCheckUrl}
     defaults: { _controller: ApplicationBundle:Check:postCheck }
     requirements:
         _method:  GET|POST
 
 backend_check_delete:
-    pattern:  /delete_check/{idCheckUrl}
+    pattern:  /backend/check/delete/{idCheckUrl}
     defaults: { _controller: ApplicationBundle:Check:deleteCheck }
     requirements:
         _method:  GET|DELETE
+
+#################################################################
+#Ping Url
+
+backend_pingUrl:
+    pattern:  /backend/pingUrl/ping/{idCheckUrl}
+    defaults: { _controller: ApplicationBundle:PingUrl:pingUrl }
+    requirements:
+        _method:  GET
+
+backend_result_pingUrl:
+    pattern:  /backend/pingUrl/ result
+    defaults: { _controller: ApplicationBundle:PingUrl:result }
+    requirements:
+        _method:  GET

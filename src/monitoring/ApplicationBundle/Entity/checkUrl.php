@@ -161,7 +161,7 @@ class checkUrl
     /**
      * Get pingInterval
      *
-     * @return integer 
+     * @return integer
      */
     public function getPingInterval()
     {

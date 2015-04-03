@@ -24,10 +24,11 @@ footer {
     text-align: center;
 }
 
-.form-error {
-    background-color: #F74E1E;
+#dashboard {
+    text-align: center;
+    letter-spacing: 4px;
+    font-weight: bold;
 }
-
 /*
  * Off Canvas
  * --------------------------------------------------

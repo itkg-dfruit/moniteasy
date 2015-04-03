@@ -1,19 +1,21 @@
-{% extends '::base.html.twig' %}
+{% extends 'ApplicationBundle::back_end_layout.html.twig' %}
+
 {% block stylesheets %}
     {{ parent() }}
     <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?lang=css&skin=desert"></script>
     <link href="{{ asset('css/result.css') }}" type="text/css" rel="stylesheet" />
 {% endblock %}
+
 {% block body %}
+
     <div class="result">
         <p class="resume">La requête a l'Url : <span id="url">{{ url }}</span> à pris <span id="time">{{ time }}</span> secondes, et à renvoyer le resultat suivant :</p>
         <div class="prettycode">
              <pre class="prettyprint">
-{{ reponse }}
+{{ response }}
             </pre>
         </div>
 
     </div>
-
 
 {% endblock %}

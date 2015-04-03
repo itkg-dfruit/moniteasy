@@ -7,54 +7,43 @@
         <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas"><i class="glyphicon glyphicon-chevron-left"></i></button>
     </p>
 
-    <h1 class="page-header">
-        Dashboard
-        <a class="btn btn-success" href="{{ path('backend_check_create') }}">Ajouter un nouveau Site a monitorer.</a>
-    </h1>
+    <h1 id="dashboard">Dashboard</h1>
 
-    <div class="row">
+    {#<div class="row placeholders">#}
+        {#<div class="col-xs-6 col-sm-3 placeholder text-center">#}
+            {#<img src="//placehold.it/200/6666ff/fff" class="center-block img-responsive img-circle" alt="Generic placeholder thumbnail">#}
+            {#<h4>Label</h4>#}
+            {#<span class="text-muted">Something else</span>#}
+        {#</div>#}
+        {#<div class="col-xs-6 col-sm-3 placeholder text-center">#}
+            {#<img src="//placehold.it/200/66ff66/fff" class="center-block img-responsive img-circle" alt="Generic placeholder thumbnail">#}
+            {#<h4>Label</h4>#}
+            {#<span class="text-muted">Something else</span>#}
+        {#</div>#}
+        {#<div class="col-xs-6 col-sm-3 placeholder text-center">#}
+            {#<img src="//placehold.it/200/6666ff/fff" class="center-block img-responsive img-circle" alt="Generic placeholder thumbnail">#}
+            {#<h4>Label</h4>#}
+            {#<span class="text-muted">Something else</span>#}
+        {#</div>#}
+        {#<div class="col-xs-6 col-sm-3 placeholder text-center">#}
+            {#<img src="//placehold.it/200/66ff66/fff" class="center-block img-responsive img-circle" alt="Generic placeholder thumbnail">#}
+            {#<h4>Label</h4>#}
+            {#<span class="text-muted">Something else</span>#}
+        {#</div>#}
+    {#</div>#}
 
-        {% if app.session is not empty %}
-            {% set targetUrl = app.session.get('_security.' ~ app.security.token.providerKey ~ '.target_path') %}
-            {% if targetUrl is not empty %}<p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>{% endif %}
-        {% endif %}
-    </div>
+    {#<hr>#}
 
-    <div class="row placeholders">
-        <div class="col-xs-6 col-sm-3 placeholder text-center">
-            <img src="//placehold.it/200/6666ff/fff" class="center-block img-responsive img-circle" alt="Generic placeholder thumbnail">
-            <h4>Label</h4>
-            <span class="text-muted">Something else</span>
-        </div>
-        <div class="col-xs-6 col-sm-3 placeholder text-center">
-            <img src="//placehold.it/200/66ff66/fff" class="center-block img-responsive img-circle" alt="Generic placeholder thumbnail">
-            <h4>Label</h4>
-            <span class="text-muted">Something else</span>
-        </div>
-        <div class="col-xs-6 col-sm-3 placeholder text-center">
-            <img src="//placehold.it/200/6666ff/fff" class="center-block img-responsive img-circle" alt="Generic placeholder thumbnail">
-            <h4>Label</h4>
-            <span class="text-muted">Something else</span>
-        </div>
-        <div class="col-xs-6 col-sm-3 placeholder text-center">
-            <img src="//placehold.it/200/66ff66/fff" class="center-block img-responsive img-circle" alt="Generic placeholder thumbnail">
-            <h4>Label</h4>
-            <span class="text-muted">Something else</span>
-        </div>
-    </div>
-
-    <hr>
-
-    <h2 class="sub-header">Section title</h2>
+    <h2 class="sub-header">Your active Checking Url :</h2>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>#</th>
-                <th>Header</th>
-                <th>Header</th>
-                <th>Header</th>
-                <th>Header</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Availability</th>
+                <th>DownTime</th>
+                <th>Average Response Time</th>
             </tr>
             </thead>
             <tbody>

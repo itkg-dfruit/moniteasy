@@ -107,8 +107,8 @@ class CheckController extends Controller
             $this->get('session')->getFlashBag()->add('error', 'Error, your Check Url does not exist');
             return $this->redirect($this->generateUrl('backend_live'));
         }
-        $id = $checkUrl->getId();
 
+        $id = $checkUrl->getId();
         $form = $this->createForm(new checkUrlType(), $checkUrl);
         $form->handleRequest($request);
 

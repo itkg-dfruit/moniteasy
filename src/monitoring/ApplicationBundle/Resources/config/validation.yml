@@ -10,12 +10,14 @@ monitoring\ApplicationBundle\Entity\checkUrl:
         timeOut:
             - GreaterThan:
                 value: 0
-                message: "Time Out cannot be negative"
+                message: "Time Out cannot be less than 1"
             - NotBlank: ~
         pingInterval:
             - GreaterThan:
                 value: 0
-                message: "Ping Interval cannot be negative"
+                message: "Ping Interval cannot be less than 1"
             - NotBlank: ~
         tags:
-            - NotBlank: ~
+            - Type:
+                type: string
+                message: "The value {{ value }} must be a string"
