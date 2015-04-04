@@ -53,7 +53,7 @@ class PingUrlController extends Controller
         // rajouter Try catch pour eviter que symfony renvoie une erreur si internet ne marche pas ou que le serveur ne répond pas
         //
 
-        // ici on va parser la reponse renvoyer par curl ( à asavoir les entête HTTP)
+        // ici on va parser la reponse renvoyée par CURL ( à savoir les entêtes HTTP)
         $headerparsed = array();
         $lines = explode("\r\n", $headers);
         $header_idx = 0;
