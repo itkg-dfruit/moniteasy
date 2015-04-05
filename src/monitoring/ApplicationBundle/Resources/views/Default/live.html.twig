@@ -35,130 +35,34 @@
     {#<hr>#}
 
     <h2 class="sub-header">Your active Checking Url :</h2>
+    <a class="btn btn-info" href="{{ path('backend_check_create') }}">Add New Check Url </a>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Availability</th>
-                <th>DownTime</th>
-                <th>Average Response Time</th>
+                <th>ID: </th>
+                <th>Name: </th>
+                <th>Url: </th>
+                <th>Time Out: </th>
+                <th>Ping Interval: </th>
+                <th>Tags: </th>
+                <th>Action: </th>
+                <th>Delete</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>1,001</td>
-                <td>Lorem</td>
-                <td>ipsum</td>
-                <td>dolor</td>
-                <td>sit</td>
-            </tr>
-            <tr>
-                <td>1,002</td>
-                <td>amet</td>
-                <td>consectetur</td>
-                <td>adipiscing</td>
-                <td>elit</td>
-            </tr>
-            <tr>
-                <td>1,003</td>
-                <td>Integer</td>
-                <td>nec</td>
-                <td>odio</td>
-                <td>Praesent</td>
-            </tr>
-            <tr>
-                <td>1,003</td>
-                <td>libero</td>
-                <td>Sed</td>
-                <td>cursus</td>
-                <td>ante</td>
-            </tr>
-            <tr>
-                <td>1,004</td>
-                <td>dapibus</td>
-                <td>diam</td>
-                <td>Sed</td>
-                <td>nisi</td>
-            </tr>
-            <tr>
-                <td>1,005</td>
-                <td>Nulla</td>
-                <td>quis</td>
-                <td>sem</td>
-                <td>at</td>
-            </tr>
-            <tr>
-                <td>1,006</td>
-                <td>nibh</td>
-                <td>elementum</td>
-                <td>imperdiet</td>
-                <td>Duis</td>
-            </tr>
-            <tr>
-                <td>1,007</td>
-                <td>sagittis</td>
-                <td>ipsum</td>
-                <td>Praesent</td>
-                <td>mauris</td>
-            </tr>
-            <tr>
-                <td>1,008</td>
-                <td>Fusce</td>
-                <td>nec</td>
-                <td>tellus</td>
-                <td>sed</td>
-            </tr>
-            <tr>
-                <td>1,009</td>
-                <td>augue</td>
-                <td>semper</td>
-                <td>porta</td>
-                <td>Mauris</td>
-            </tr>
-            <tr>
-                <td>1,010</td>
-                <td>massa</td>
-                <td>Vestibulum</td>
-                <td>lacinia</td>
-                <td>arcu</td>
-            </tr>
-            <tr>
-                <td>1,011</td>
-                <td>eget</td>
-                <td>nulla</td>
-                <td>Class</td>
-                <td>aptent</td>
-            </tr>
-            <tr>
-                <td>1,012</td>
-                <td>taciti</td>
-                <td>sociosqu</td>
-                <td>ad</td>
-                <td>litora</td>
-            </tr>
-            <tr>
-                <td>1,013</td>
-                <td>torquent</td>
-                <td>per</td>
-                <td>conubia</td>
-                <td>nostra</td>
-            </tr>
-            <tr>
-                <td>1,014</td>
-                <td>per</td>
-                <td>inceptos</td>
-                <td>himenaeos</td>
-                <td>Curabitur</td>
-            </tr>
-            <tr>
-                <td>1,015</td>
-                <td>sodales</td>
-                <td>ligula</td>
-                <td>in</td>
-                <td>libero</td>
-            </tr>
+            {% for checkUrl in data %}
+                <tr>
+                    <td><a href="{{ path('backend_check_read', {'idCheckUrl' : checkUrl.id}) }}">{{ checkUrl.id }}</a></td>
+                    <td>{{ checkUrl.name }}</td>
+                    <td>{{ checkUrl.url }}</td>
+                    <td>{{ checkUrl.timeOut }} sec</td>
+                    <td>{{ checkUrl.pingInterval }} sec</td>
+                    <td>{{ checkUrl.tags }}</td>
+                    <td><a href="{{ path('backend_check_update', {'idCheckUrl' : checkUrl.id}) }}">Edit</a></td>
+                    <td><a href="{{ path('backend_check_delete', {'idCheckUrl' : checkUrl.id}) }}">x</a></td>
+                </tr>
+            {% endfor %}
             </tbody>
         </table>
     </div>

@@ -48,7 +48,7 @@
                 {% for flashMessages in app.session.flashbag.all() %}
                     {% for flashMessage in flashMessages %}
                         <div class="flash-message">
-                            {{ flashMessage }}
+                            <p>{{ flashMessage }}</p>
                         </div>
                     {% endfor %}
                 {% endfor %}

@@ -3,6 +3,9 @@
 namespace monitoring\ApplicationBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use monitoring\ApplicationBundle\Entity\checkUrl;
+use monitoring\ApplicationBundle\Form\checkUrlType;
+
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 
 
@@ -21,7 +24,14 @@ class DefaultController extends Controller
 
     public function dashBoardAction()
     {
-        return $this->render('ApplicationBundle:Default:live.html.twig');
+        $repository = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('ApplicationBundle:checkUrl')
+        ;
+        $checkUrls = $repository->findAll();
+
+        return $this->render('ApplicationBundle:Default:live.html.twig', array('data' => $checkUrls));
     }
 
     public function notificationAction()

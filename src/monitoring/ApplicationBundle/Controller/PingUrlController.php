@@ -48,7 +48,6 @@ class PingUrlController extends Controller
 
         $headers = $curl->execute();
         $data = $curl->getInfo();
-
         //
         // rajouter Try catch pour eviter que symfony renvoie une erreur si internet ne marche pas ou que le serveur ne répond pas
         //
@@ -83,10 +82,6 @@ class PingUrlController extends Controller
         $em->flush();
 
         return $this->render('ApplicationBundle:PingUrl:result.html.twig', array('response' => $headers, 'time' => $data['total_time'], 'url' => $data['url']));
-
-
-
-
     }
     
     public function resultAction()
