@@ -112,7 +112,16 @@ backend_pingUrl:
         _method:  GET
 
 backend_result_pingUrl:
-    pattern:  /backend/pingUrl/ result
+    pattern:  /backend/pingUrl/result
     defaults: { _controller: ApplicationBundle:PingUrl:result }
     requirements:
         _method:  GET
+
+#################################################################
+#Ping Url
+
+backend_test_snmp:
+    pattern:  /backend/snmp/test/{idCheckUrl}
+    defaults: { _controller: ApplicationBundle:PingUrl:testSNMP }
+    requirements:
+        _method:  GET|POST

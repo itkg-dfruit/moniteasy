@@ -9,6 +9,7 @@ use monitoring\ApplicationBundle\Form\checkUrlType;
 
 use monitoring\ApplicationBundle\Entity\pingUrl;
 use monitoring\ApplicationBundle\Form\pingUrlType;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
 
 use Symfony\Component\HttpFoundation\Request;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
@@ -84,8 +85,57 @@ class PingUrlController extends Controller
         return $this->render('ApplicationBundle:PingUrl:result.html.twig', array('response' => $headers, 'time' => $data['total_time'], 'url' => $data['url']));
     }
     
-    public function resultAction()
+    public function testSNMPAction($idCheckUrl)
     {
 
+//        $repository = $this
+//            ->getDoctrine()
+//            ->getManager()
+//            ->getRepository('ApplicationBundle:checkUrl')
+//        ;
+//        $checkUrl = $repository->find($idCheckUrl);
+//
+//        if (!$checkUrl) {
+//            $this->get('session')->getFlashBag()->add('error', 'Error, your Check Url does not exist');
+//            return $this->redirect($this->generateUrl('backend_live'));
+//        }
+//
+//        $options = array(
+//            'CURLOPT_FRESH_CONNECT'=> TRUE,
+//            'CURLOPT_TIMEOUT'=> $checkUrl->getTimeOut(),
+//            'CURLOPT_CONNECTTIMEOUT' => $checkUrl->getTimeOut(),
+//            'CURLOPT_SSL_VERIFYPEER' => FALSE,
+//            'CURLOPT_SSL_VERIFYHOST' => 0,
+//            'CURLOPT_FOLLOWLOCATION' => TRUE,
+//            'CURLOPT_RETURNTRANSFER' => TRUE,
+//        );
+//
+//        $curl = $this->get('anchovy.curl')->setURL($checkUrl->getUrl())->setOptions($options);
+//
+//        $headers = json_decode($curl->execute());
+////        $data = $curl->getInfo();
+//
+//        var_dump($headers); die;
+
+        $url = 'http://localhost:6969/scan_device';
+
+//  Initiate curl
+        $ch = curl_init();
+// Disable SSL verification
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+// Will return the response, if false it print the response
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+// Set the url
+        curl_setopt($ch, CURLOPT_URL,$url);
+// Execute
+        $result=curl_exec($ch);
+// Closing
+        curl_close($ch);
+
+// Will dump a beauty json :3
+//        var_dump($result); die;
+        var_dump(json_decode($result, true)); die;
+
+//        return $this->render('ApplicationBundle:PingUrl:result.html.twig', array('response' => $headers, 'time' => $data['total_time'], 'url' => $data['url']));
     }
 }

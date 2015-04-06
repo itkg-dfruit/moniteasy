@@ -6,4 +6,7 @@
     <p><strong>Time out: </strong>{{ checkUrl.timeOut }}sec</p>
     <p><strong>Ping Interval: </strong>{{ checkUrl.pingInterval }}sec</p>
     <p><strong>Tags: </strong>{{ checkUrl.tags }}</p>
+
+    {#<button class="btn btn-info"></button>#}
+    <a class="btn btn-success" href="{{ path('backend_pingUrl', {'idCheckUrl' : checkUrl.id}) }}">Ping !</a>
 {% endblock %}
