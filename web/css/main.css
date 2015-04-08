@@ -79,4 +79,23 @@ img.pull-left { margin-right: 10px; }
 		.footer2 p { margin: 0; }
 
 	.widget-simplenav { margin-left:-5px; }		
-	.widget-simplenav a{ margin:0 5px; }		
+	.widget-simplenav a{ margin:0 5px; }
+
+
+.maincontent form .messageContact { height: 200px; }
+
+.flash-message {
+    background-color: #9698A7;
+    color: white;
+    padding: 10px 0;
+    margin: 0 0 1% 0;
+    text-align: center;
+    letter-spacing: 4px;
+    font-weight: bold;
+}
+
+.flash-message p {
+    letter-spacing: 4px;
+    font-weight: bold;
+    margin: 0 0 0 0;
+}

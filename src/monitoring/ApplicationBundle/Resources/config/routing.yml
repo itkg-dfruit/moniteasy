@@ -28,7 +28,7 @@ front_contact:
     pattern:  /contact
     defaults: { _controller: ApplicationBundle:Front:contact }
     requirements:
-        _method:  GET
+        _method:  GET|POST
 
 front_signIn:
     pattern:  /signIn
@@ -121,7 +121,7 @@ backend_result_pingUrl:
 #Ping Url
 
 backend_test_snmp:
-    pattern:  /backend/snmp/test/{idCheckUrl}
+    pattern:  /backend/snmp/test
     defaults: { _controller: ApplicationBundle:PingUrl:testSNMP }
     requirements:
         _method:  GET|POST

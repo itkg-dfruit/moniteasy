@@ -85,56 +85,36 @@ class PingUrlController extends Controller
         return $this->render('ApplicationBundle:PingUrl:result.html.twig', array('response' => $headers, 'time' => $data['total_time'], 'url' => $data['url']));
     }
     
-    public function testSNMPAction($idCheckUrl)
+    public function testSNMPAction()
     {
+        // set HTTP header
+        $headers = array(
+            'Content-Type: application/json',
+        );
 
-//        $repository = $this
-//            ->getDoctrine()
-//            ->getManager()
-//            ->getRepository('ApplicationBundle:checkUrl')
-//        ;
-//        $checkUrl = $repository->find($idCheckUrl);
-//
-//        if (!$checkUrl) {
-//            $this->get('session')->getFlashBag()->add('error', 'Error, your Check Url does not exist');
-//            return $this->redirect($this->generateUrl('backend_live'));
-//        }
-//
-//        $options = array(
-//            'CURLOPT_FRESH_CONNECT'=> TRUE,
-//            'CURLOPT_TIMEOUT'=> $checkUrl->getTimeOut(),
-//            'CURLOPT_CONNECTTIMEOUT' => $checkUrl->getTimeOut(),
-//            'CURLOPT_SSL_VERIFYPEER' => FALSE,
-//            'CURLOPT_SSL_VERIFYHOST' => 0,
-//            'CURLOPT_FOLLOWLOCATION' => TRUE,
-//            'CURLOPT_RETURNTRANSFER' => TRUE,
-//        );
-//
-//        $curl = $this->get('anchovy.curl')->setURL($checkUrl->getUrl())->setOptions($options);
-//
-//        $headers = json_decode($curl->execute());
-////        $data = $curl->getInfo();
-//
-//        var_dump($headers); die;
+        $url = 'http://localhost:6969';
 
-        $url = 'http://localhost:6969/scan_device';
-
-//  Initiate curl
+        // Open connection
         $ch = curl_init();
-// Disable SSL verification
+
+        // Set the url, number of GET vars, GET data
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POST, false);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true );
+
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-// Will return the response, if false it print the response
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-// Set the url
-        curl_setopt($ch, CURLOPT_URL,$url);
-// Execute
-        $result=curl_exec($ch);
-// Closing
+
+        // Execute request
+        $result = curl_exec($ch);
+
+        // Close connection
         curl_close($ch);
 
-// Will dump a beauty json :3
-//        var_dump($result); die;
-        var_dump(json_decode($result, true)); die;
+        // get the result and parse to JSON
+        $result_arr = json_decode($result, true);
+
+        var_dump($result_arr['OsNetworkInterface']); die;
 
 //        return $this->render('ApplicationBundle:PingUrl:result.html.twig', array('response' => $headers, 'time' => $data['total_time'], 'url' => $data['url']));
     }

@@ -3,6 +3,10 @@
 namespace monitoring\ApplicationBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use monitoring\ApplicationBundle\Entity\contact;
+use monitoring\ApplicationBundle\Form\contactType;
+use Symfony\Component\HttpFoundation\Request;
+
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 
 
@@ -33,10 +37,35 @@ class FrontController extends Controller
         return $this->render('ApplicationBundle:Front:apidoc.html.twig', array('title' => $title));
     }
 
-    public function contactAction()
+    public function contactAction(Request $request)
     {
         $title = 'Contact Us';
-        return $this->render('ApplicationBundle:Front:contact.html.twig', array('title' => $title));
+
+        $contact = new contact();
+        $form = $this->createForm(new contactType(), $contact);
+
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+
+            $message = \Swift_Message::newInstance()
+                ->setSubject('Contact Message from MonitEasy')
+                ->setFrom('gauvin.thibaut83@gmail.com')
+                ->setTo('arkezis@hotmail.fr')
+                ->setBody($this->renderView('ApplicationBundle:Front:email.txt.twig', array('contact' => $contact)));
+            $this->get('mailer')->send($message);
+
+            $request->getSession()
+                ->getFlashBag()
+                ->add('success', 'Your Message has been successfully send')
+            ;
+
+            return $this->redirect($this->generateUrl('front_contact'));
+        }
+
+        return $this->render('ApplicationBundle:Front:contact.html.twig', array(
+            'form' => $form->createView(), 'title' => $title
+        ));
+
     }
 
     public function signInAction()
