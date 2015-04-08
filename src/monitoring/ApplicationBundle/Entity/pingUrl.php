@@ -49,7 +49,7 @@ class pingUrl
     private $responseTime;
 
     /**
-     * @ORM\ManyToOne(targetEntity="monitoring\ApplicationBundle\Entity\checkUrl", inversedBy="checkUrl", cascade = {"persist"})
+     * @ORM\ManyToOne(targetEntity="monitoring\ApplicationBundle\Entity\checkUrl", inversedBy="checkUrl", cascade = {"persist", "remove"})
      **/
     private $checkUrl;
 

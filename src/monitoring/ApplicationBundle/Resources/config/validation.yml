@@ -13,9 +13,9 @@ monitoring\ApplicationBundle\Entity\checkUrl:
                 message: "Time Out cannot be less than 1"
             - NotBlank: ~
         pingInterval:
-            - GreaterThan:
-                value: 0
-                message: "Ping Interval cannot be less than 1"
+            - GreaterThanOrEqual:
+                value: 120
+                message: "Ping Interval cannot be less than 120 seconds"
             - NotBlank: ~
         tags:
             - Type:

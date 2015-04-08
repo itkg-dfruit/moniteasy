@@ -52,6 +52,7 @@ class FrontController extends Controller
                 ->setFrom('gauvin.thibaut83@gmail.com')
                 ->setTo('arkezis@hotmail.fr')
                 ->setBody($this->renderView('ApplicationBundle:Front:email.txt.twig', array('contact' => $contact)));
+            $message->setContentType("text/html");
             $this->get('mailer')->send($message);
 
             $request->getSession()

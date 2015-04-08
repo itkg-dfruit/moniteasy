@@ -51,9 +51,9 @@
             </tr>
             </thead>
             <tbody>
-            {% for checkUrl in data %}
+            {% for key, checkUrl in data %}
                 <tr>
-                    <td><a href="{{ path('backend_check_read', {'idCheckUrl' : checkUrl.id}) }}">{{ checkUrl.id }}</a></td>
+                    <td><a href="{{ path('backend_check_read', {'idCheckUrl' : checkUrl.id}) }}">{{ key }}</a></td>
                     <td>{{ checkUrl.name }}</td>
                     <td>{{ checkUrl.url }}</td>
                     <td>{{ checkUrl.timeOut }} sec</td>

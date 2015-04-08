@@ -1,3 +1,8 @@
+thibaut_test:
+    pattern:  /thibaut/test
+    defaults: { _controller: ApplicationBundle:Default:thibautTest }
+    requirements:
+        _method:  GET
 ################################################################
 # front
 front_home:

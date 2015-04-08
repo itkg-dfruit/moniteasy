@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use monitoring\ApplicationBundle\Entity\checkUrl;
 use monitoring\ApplicationBundle\Form\checkUrlType;
+use monitoring\ApplicationBundle\Entity\pingUrl;
+use monitoring\ApplicationBundle\Form\pingUrlType;
 use Symfony\Component\HttpFoundation\Request;
 
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
@@ -133,13 +135,20 @@ class CheckController extends Controller
 
     public function deleteCheckAction($idCheckUrl)
     {
-        $repository = $this
+        $repository1 = $this
             ->getDoctrine()
             ->getManager()
             ->getRepository('ApplicationBundle:checkUrl')
         ;
+        $checkUrl = $repository1->find($idCheckUrl);
 
-        $checkUrl = $repository->find($idCheckUrl);
+        $repository2 = $this
+            ->getDoctrine()
+            ->getManager()
+            ->getRepository('ApplicationBundle:pingUrl')
+        ;
+        $pingUrls = $repository2->findBycheckUrl($checkUrl->getId());
+
 
         if (!$checkUrl) {
             $this->get('session')->getFlashBag()->add('error', 'Error, your Check Url does not exist');
@@ -148,10 +157,18 @@ class CheckController extends Controller
         else {
             $manager = $this->getDoctrine()->getManager();
             $manager->remove($checkUrl);
+            if(!is_array($pingUrls))
+            {
+                $pingUrls = array($pingUrls);
+            }
+            foreach($pingUrls as $pingUrl)
+            {
+                $manager->remove($pingUrl);
+            }
             $manager->flush();
 
             $this->get('session')->getFlashBag()->add('success', 'Your checkUrl has been properly deleted');
-            return $this->redirect($this->generateUrl('backend_live'));
+            return $this->redirect($this->generateUrl('backend_dashboard'));
         }
     }
 }
